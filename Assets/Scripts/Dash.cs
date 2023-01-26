@@ -9,7 +9,7 @@ public class Dash : MonoBehaviour
 
     void Update()
     {
-        //if(Input.GetKeyDown(KeyCode.Mouse0))
+        //if (Input.GetKeyDown(KeyCode.Mouse0))
         //{
         //    rb.velocity = new Vector2(0, 0);
         //    rb.AddForce(transform.right * speed);

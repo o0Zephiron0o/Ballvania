@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _rb.velocity = new Vector2(_projectileSpeed, _rb.velocity.y);   
+        _rb.velocity = transform.up * _projectileSpeed;
     }
 
     private void Despawn()

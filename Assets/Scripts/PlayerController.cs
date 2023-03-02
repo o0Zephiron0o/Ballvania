@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     private PlayerControls _controls;
 
     private InputAction _dashAction;
-
+    private InputAction _swapStateAction;
     private InputAction _aimAction;
 
     [SerializeField] private PlayerInput _input;
@@ -18,12 +18,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Rigidbody2D _rb;
     [SerializeField] float _dashSpeed;
 
+    [SerializeField] bool _isSticky;
+
     private Vector3 lookDirection;
 
     private void Awake()
     {
         _controls = new PlayerControls();
         _dashAction = _input.actions[_controls.MainCharacter.Dash.name];
+
+        _swapStateAction = _input.actions[_controls.MainCharacter.SwapState.name];
 
         _aimAction = _input.actions[_controls.MainCharacter.Aim.name];
 
@@ -32,11 +36,13 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         _dashAction.performed += OnDash;
+        _swapStateAction.performed += OnSwapState;
     }
 
     private void OnDisable()
     {
         _dashAction.performed -= OnDash;
+        _swapStateAction.performed -= OnSwapState;
     }
 
     private void Update()
@@ -75,18 +81,49 @@ public class PlayerController : MonoBehaviour
             _rb.transform.rotation = Quaternion.LookRotation(Vector3.forward, lookDirection);
         }
 
+
+        gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.green;
+
+        if (_isSticky == false)
+        {
+            gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.cyan;
+
+            _rb.constraints = RigidbodyConstraints2D.None;
+        }
     }
 
     private void OnDash(InputAction.CallbackContext context)
     {
-        Debug.Log("Dash");
+        //Debug.Log("Dash");
+
+        _rb.constraints = RigidbodyConstraints2D.None;
 
         _rb.velocity = new Vector2(lookDirection.x * _dashSpeed, lookDirection.y * _dashSpeed);
+    }
+    private void OnSwapState(InputAction.CallbackContext context)
+    {
+        if(_isSticky == false)
+        {
+            _isSticky = true;
+        }
+        else if(_isSticky == true)
+        {
+            _isSticky = false;
+
+           
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        _playerStats.TakeDamage(1);
+        if(_isSticky == true)
+        {
+            _rb.velocity = Vector2.zero;
+            _rb.constraints = RigidbodyConstraints2D.FreezePosition;
+        }
+        
+
+        //_playerStats.TakeDamage(1);
     }
 
 

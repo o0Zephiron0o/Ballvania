@@ -44,6 +44,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SwapState"",
+                    ""type"": ""Button"",
+                    ""id"": ""a122df2f-0341-4792-86f4-7e2d0060dbe2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -66,6 +75,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""GamePad;MouseKeyboard"",
                     ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""824937b2-8d7e-4f87-a6d1-5b9c38d80ca0"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseKeyboard"",
+                    ""action"": ""SwapState"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -106,6 +126,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_MainCharacter = asset.FindActionMap("MainCharacter", throwIfNotFound: true);
         m_MainCharacter_Dash = m_MainCharacter.FindAction("Dash", throwIfNotFound: true);
         m_MainCharacter_Aim = m_MainCharacter.FindAction("Aim", throwIfNotFound: true);
+        m_MainCharacter_SwapState = m_MainCharacter.FindAction("SwapState", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -167,12 +188,14 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private IMainCharacterActions m_MainCharacterActionsCallbackInterface;
     private readonly InputAction m_MainCharacter_Dash;
     private readonly InputAction m_MainCharacter_Aim;
+    private readonly InputAction m_MainCharacter_SwapState;
     public struct MainCharacterActions
     {
         private @PlayerControls m_Wrapper;
         public MainCharacterActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Dash => m_Wrapper.m_MainCharacter_Dash;
         public InputAction @Aim => m_Wrapper.m_MainCharacter_Aim;
+        public InputAction @SwapState => m_Wrapper.m_MainCharacter_SwapState;
         public InputActionMap Get() { return m_Wrapper.m_MainCharacter; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -188,6 +211,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Aim.started -= m_Wrapper.m_MainCharacterActionsCallbackInterface.OnAim;
                 @Aim.performed -= m_Wrapper.m_MainCharacterActionsCallbackInterface.OnAim;
                 @Aim.canceled -= m_Wrapper.m_MainCharacterActionsCallbackInterface.OnAim;
+                @SwapState.started -= m_Wrapper.m_MainCharacterActionsCallbackInterface.OnSwapState;
+                @SwapState.performed -= m_Wrapper.m_MainCharacterActionsCallbackInterface.OnSwapState;
+                @SwapState.canceled -= m_Wrapper.m_MainCharacterActionsCallbackInterface.OnSwapState;
             }
             m_Wrapper.m_MainCharacterActionsCallbackInterface = instance;
             if (instance != null)
@@ -198,6 +224,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Aim.started += instance.OnAim;
                 @Aim.performed += instance.OnAim;
                 @Aim.canceled += instance.OnAim;
+                @SwapState.started += instance.OnSwapState;
+                @SwapState.performed += instance.OnSwapState;
+                @SwapState.canceled += instance.OnSwapState;
             }
         }
     }
@@ -224,5 +253,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     {
         void OnDash(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
+        void OnSwapState(InputAction.CallbackContext context);
     }
 }

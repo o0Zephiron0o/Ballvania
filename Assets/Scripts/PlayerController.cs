@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log("Dash");
 
-        _isSticky = false;
+        _rb.constraints = RigidbodyConstraints2D.None;
 
         _rb.velocity = new Vector2(lookDirection.x * _dashSpeed, lookDirection.y * _dashSpeed);
     }

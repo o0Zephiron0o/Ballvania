@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4803280760738172295}
   m_Layer: 0
-  m_Name: EnemyHolder
-  m_TagString: Untagged
+  m_Name: SpikyStatic
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,6 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4803280760998315120}
   - component: {fileID: 4803280760998315121}
+  - component: {fileID: 8043240220646317034}
   m_Layer: 0
   m_Name: PointyResize_0
   m_TagString: Untagged
@@ -117,6 +118,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &8043240220646317034
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4803280760998315123}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.009135097}
+  serializedVersion: 2
+  m_Radius: 0.4886848
 --- !u!1 &4803280761420489865
 GameObject:
   m_ObjectHideFlags: 0

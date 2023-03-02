@@ -13,16 +13,12 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private PlayerInput _input;
 
+    [SerializeField] PlayerStats _playerStats;
 
     [SerializeField] Rigidbody2D _rb;
     [SerializeField] float _dashSpeed;
 
     private Vector3 lookDirection;
-
-    //public void OnShoot()
-    //{
-    //    Debug.Log("Shoot");
-    //}
 
     private void Awake()
     {
@@ -60,7 +56,7 @@ public class PlayerController : MonoBehaviour
 
             Vector3 Worldpos = (Camera.main.ScreenToWorldPoint(mousePos) - _rb.transform.position).normalized;
 
-            Debug.Log(Worldpos);
+            //Debug.Log(Worldpos);
             lookDirection = Worldpos;
 
 
@@ -86,6 +82,11 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Dash");
 
         _rb.velocity = new Vector2(lookDirection.x * _dashSpeed, lookDirection.y * _dashSpeed);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        _playerStats.TakeDamage(1);
     }
 
 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4535bd50b4c783647a4b287ddc3f6a84
+guid: dc7bc3675ba594c42b54713f4cec34c5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 750
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,7 +69,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -104,22 +104,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SpikesForPointy_0
+      name: SpikesResize_4
       rect:
         serializedVersion: 2
-        x: 21
-        y: 404
-        width: 538
-        height: 902
+        x: 1
+        y: 1
+        width: 86
+        height: 135
       alignment: 0
       pivot: {x: 0, y: 0}
-      border: {x: 0, y: 24, z: 0, w: 18}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4aa4b2de23d853245b9391795322a27e
-      internalID: -1535560598
+      spriteID: 379aa72951d6c1a4984838ea17773445
+      internalID: -730983354
       vertices: []
       indices: 
       edges: []
@@ -135,15 +135,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SpikesForPointy_1: 806531682
-      SpikesForPointy_8: -1542966676
-      SpikesForPointy_3: -1038576786
-      SpikesForPointy_2: -598729564
-      SpikesForPointy_5: 1063236845
-      SpikesForPointy_7: -2066198311
-      SpikesForPointy_4: -1313786711
-      SpikesForPointy_0: -1535560598
-      SpikesForPointy_6: 1548806876
+      SpikesResize_2: 734989621
+      SpikesResize_0: 310548559
+      SpikesResize_3: 1130637260
+      SpikesResize_1: 1148062340
+      SpikesResize_4: -730983354
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

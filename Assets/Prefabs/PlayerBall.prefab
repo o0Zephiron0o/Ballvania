@@ -196,10 +196,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6718945912433048416}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6718945911393742198}
   - {fileID: 6718945910700306241}
@@ -221,7 +221,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -242,7 +242,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.32
+  m_Radius: 0.46
 --- !u!114 &6718945912433048444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +276,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 46bea658-c1ef-4f67-89c9-27bab96a8816
     m_ActionName: MainCharacter/Aim
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a122df2f-0341-4792-86f4-7e2d0060dbe2
+    m_ActionName: MainCharacter/SwapState[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: MouseKeyboard
   m_DefaultActionMap: MainCharacter
@@ -296,7 +300,8 @@ MonoBehaviour:
   _input: {fileID: 6718945912433048444}
   _playerStats: {fileID: 6718945912433048441}
   _rb: {fileID: 6718945912433048445}
-  _dashSpeed: 10
+  _dashSpeed: 50
+  _isSticky: 0
 --- !u!114 &6718945912433048441
 MonoBehaviour:
   m_ObjectHideFlags: 0

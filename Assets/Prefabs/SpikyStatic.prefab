@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 4803280760998315120}
   - component: {fileID: 4803280760998315121}
   - component: {fileID: 8043240220646317034}
+  - component: {fileID: 1981605693309454658}
   m_Layer: 0
   m_Name: PointyResize_0
   m_TagString: Untagged
@@ -134,6 +135,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.009135097}
   serializedVersion: 2
   m_Radius: 0.4886848
+--- !u!114 &1981605693309454658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4803280760998315123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb462ef405c6fcf4885ce4405c7d1cc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destructible: {fileID: 4803280760738172294}
 --- !u!1 &4803280761420489865
 GameObject:
   m_ObjectHideFlags: 0

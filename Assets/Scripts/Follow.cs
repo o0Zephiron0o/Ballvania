@@ -8,12 +8,17 @@ public class Follow : MonoBehaviour
 
     private void Start()
     {
-        target = GameObject.Find("PlayerBall");
+        //target = GameObject.Find("PlayerBall");
     }
 
 
     void Update()
     {
+        if(target == null)
+        {
+            target = FindObjectOfType<PlayerStats>()?.gameObject;
+        }
+        
         gameObject.transform.position = new Vector3(target.transform.position.x, target.transform.position.y, gameObject.transform.position.z);
     }
 }

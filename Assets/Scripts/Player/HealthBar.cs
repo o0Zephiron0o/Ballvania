@@ -8,21 +8,32 @@ public class HealthBar : MonoBehaviour
     [SerializeField] PlayerStats playerStats;
     [SerializeField] Slider healthBarSlider;
 
-    private void OnEnable()
+    bool _subscribed;
+
+    private void Update()
     {
-        playerStats.updateHealth += OnUpdateHealth;
+        if (playerStats == null)
+        {
+            playerStats = FindObjectOfType<PlayerStats>();
+        }
+
+        if (!_subscribed && playerStats != null)
+        {
+            playerStats.updateHealth += OnUpdateHealth;
+            _subscribed = true;
+            OnUpdateHealth(playerStats.currentHP, playerStats.MaxHp);
+        }
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
-        playerStats.updateHealth -= OnUpdateHealth;
+        if (_subscribed && playerStats != null)
+        {
+            playerStats.updateHealth -= OnUpdateHealth;
+            _subscribed = false;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void OnUpdateHealth(float currentHealth, float maxHealth)
     {

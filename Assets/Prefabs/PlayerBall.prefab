@@ -301,6 +301,7 @@ MonoBehaviour:
   _playerStats: {fileID: 6718945912433048441}
   _rb: {fileID: 6718945912433048445}
   _dashSpeed: 50
+  _maxDash: 1
   _isSticky: 0
 --- !u!114 &6718945912433048441
 MonoBehaviour:

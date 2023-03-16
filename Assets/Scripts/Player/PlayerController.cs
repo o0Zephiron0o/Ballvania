@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] Rigidbody2D _rb;
     [SerializeField] float _dashSpeed;
+    [SerializeField] int _maxDash;
+    private int _remainingDash;
 
     [SerializeField] bool _isSticky;
 
@@ -49,7 +51,7 @@ public class PlayerController : MonoBehaviour
     {
 
         
-
+        //Get Look Direction
         //mouse
         if (_input.currentControlScheme == _controls.MouseKeyboardScheme.name)
         {
@@ -75,17 +77,18 @@ public class PlayerController : MonoBehaviour
         }
 
 
-
+        //Rotate to face look Direction
         if (lookDirection.magnitude > 0)
         {
             _rb.transform.rotation = Quaternion.LookRotation(Vector3.forward, lookDirection);
         }
 
-
+        //Change to green under other circustances
         gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.green;
 
         if (_isSticky == false)
         {
+            //go blue if not stcky instead
             gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.cyan;
 
             _rb.constraints = RigidbodyConstraints2D.None;
@@ -95,10 +98,14 @@ public class PlayerController : MonoBehaviour
     private void OnDash(InputAction.CallbackContext context)
     {
         //Debug.Log("Dash");
+        if(_remainingDash > 0)
+        {
+            _rb.constraints = RigidbodyConstraints2D.None;
 
-        _rb.constraints = RigidbodyConstraints2D.None;
-
-        _rb.velocity = new Vector2(lookDirection.x * _dashSpeed, lookDirection.y * _dashSpeed);
+            _rb.velocity = new Vector2(lookDirection.x * _dashSpeed, lookDirection.y * _dashSpeed);
+            _remainingDash -= 1;
+        }
+        
     }
     private void OnSwapState(InputAction.CallbackContext context)
     {
@@ -121,6 +128,8 @@ public class PlayerController : MonoBehaviour
             _rb.velocity = Vector2.zero;
             _rb.constraints = RigidbodyConstraints2D.FreezePosition;
         }
+
+        _remainingDash = 1;
         
 
         //_playerStats.TakeDamage(1);

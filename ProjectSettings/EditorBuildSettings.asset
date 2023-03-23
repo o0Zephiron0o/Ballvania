@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/ClassResources/SafeRoom1.unity
+    path: Assets/Scenes/ClassResources/TheDoorClass/Scenes/MainMenu.unity
+    guid: 57f71991c17cbce45b6930914072908a
+  - enabled: 1
+    path: Assets/Scenes/ClassResources/TheDoorClass/Scenes/SafeRoom1.unity
     guid: 6b77553fbb80747459828e882fc46bee
   - enabled: 1
-    path: Assets/Scenes/ClassResources/SafeRoom2.unity
+    path: Assets/Scenes/ClassResources/TheDoorClass/Scenes/SafeRoom2.unity
     guid: c4d4142eb5b382b438d0e47a86cb975a
   m_configObjects: {}

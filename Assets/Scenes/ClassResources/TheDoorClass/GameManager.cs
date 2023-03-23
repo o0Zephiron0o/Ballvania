@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, ISavable<GameManagerSaveData>
 {
     private static GameManager instance;
 
@@ -65,4 +65,18 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void ApplySaveData(GameManagerSaveData saveData)
+    {
+        _currentHealth = saveData.playerHealth;
+        _hasSavedHealth = true;
+    }
+
+    public GameManagerSaveData GetSaveData()
+    {
+        GameManagerSaveData saveData = new GameManagerSaveData();
+
+        saveData.playerHealth = _currentHealth;
+
+        return saveData;
+    }
 }

@@ -91,6 +91,8 @@ public class PlayerController : MonoBehaviour
             //go blue if not stcky instead
             gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.cyan;
 
+            //transform.parent = null;
+
             _rb.constraints = RigidbodyConstraints2D.None;
         }
     }
@@ -126,6 +128,8 @@ public class PlayerController : MonoBehaviour
         if(_isSticky == true)
         {
             _rb.velocity = Vector2.zero;
+            //transform.parent = collision.transform;
+
             _rb.constraints = RigidbodyConstraints2D.FreezePosition;
         }
 

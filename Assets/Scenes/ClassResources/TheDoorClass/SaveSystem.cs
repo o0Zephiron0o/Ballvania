@@ -7,20 +7,23 @@ using UnityEngine.SceneManagement;
 public class SaveSystem : MonoBehaviour
 {
 
-    private const string saveKeyBase = "Save";
+	private const string saveKeyBase = "Save";
 
-    private List<Saver> _savers = new List<Saver>();
+	private List<Saver> _savers = new List<Saver>();
 
-    private SaveGameData _saveGameData = new SaveGameData();
+	private SaveGameData _saveGameData = new SaveGameData();
 
-    private int _currentSlot;
+	private int _currentSlot;
 
-    private PersistentDataPathDataStorer _storer = new PersistentDataPathDataStorer();
+	private PersistentDataPathDataStorer _storer = new PersistentDataPathDataStorer();
 
 
-    private static SaveSystem instance;
+	private static SaveSystem instance;
 
-    public static SaveSystem Instance => instance;
+	public static SaveSystem Instance => instance;
+
+	public delegate void SaveDataApplied();
+	public event SaveDataApplied OnSaveDataApplied;
 
 
     protected virtual void Awake()
@@ -46,24 +49,44 @@ public class SaveSystem : MonoBehaviour
     }
 
 
-    public void RegisterSaver(Saver saver)
-    {
-        if (saver == null || _savers.Contains(saver))
-        {
-            return;
-        }
+    //public void RegisterSaver(Saver saver)
+    //{
+    //    if (saver == null || _savers.Contains(saver))
+    //    {
+    //        return;
+    //    }
 
-        if (string.IsNullOrWhiteSpace(saver.Key))
-        {
-            return;
-        }
-        _savers.Add(saver);
-    }
+    //    if (string.IsNullOrWhiteSpace(saver.Key))
+    //    {
+    //        return;
+    //    }
+    //    _savers.Add(saver);
+    //}
 
-    public void UnregisterSaver(Saver saver)
+    //public void UnregisterSaver(Saver saver)
+    //{
+    //    _savers.Remove(saver);
+    //}
+
+	public void NewGame(int sceneIndex)
     {
-        _savers.Remove(saver);
-    }
+		SaveSystem.Instance.ClearSavedGameData();
+		StartCoroutine(LoadSceneCoroutine(sceneIndex));
+	}
+
+	private IEnumerator LoadSceneCoroutine(int sceneIndex)
+    {
+		SceneManager.LoadScene(sceneIndex);
+
+		yield return null;
+
+		ApplySaveGameData();
+	}
+
+	public void ChangeScene(int sceneIndex)
+    {
+		StartCoroutine(LoadSceneCoroutine(sceneIndex));
+	}
 
     public void LoadGameFromSlot(int slotNumber, bool loadScene = true)
     {
@@ -89,6 +112,8 @@ public class SaveSystem : MonoBehaviour
             var locationName = _saveGameData.SceneName;
             SceneManager.LoadScene(locationName);
         }
+
+		yield return null;
 
         ApplySaveGameData();
 
@@ -157,29 +182,38 @@ public class SaveSystem : MonoBehaviour
 	/// <param name="saveGameData">Save game data.</param>
 	public void ApplySaveGameData(SaveGameData saveGameData)
 	{
-		if (_savers.Count <= 0)
+		Debug.Log("apply save data");
+
+		_savers = new List<Saver>();
+		_savers.AddRange(FindObjectsOfType<Saver>());
+
+		if (_savers.Count > 0)
 		{
-			return;
-		}
-		for (int i = _savers.Count - 1; i >= 0; i--) // A saver may remove itself from list during apply.
-		{
-			try
+			for (int i = _savers.Count - 1; i >= 0; i--) // A saver may remove itself from list during apply.
 			{
-				if (0 <= i && i < _savers.Count)
+				try
 				{
-					Saver saver = _savers[i];
-					if (saver != null)
+					if (0 <= i && i < _savers.Count)
 					{
-						string saverDataString = saveGameData.GetData(saver.Key);
-						saver.TryApplyData(saverDataString);
+						Saver saver = _savers[i];
+
+						Debug.Log(saver.gameObject.name);
+
+						if (saver != null)
+						{
+							string saverDataString = saveGameData.GetData(saver.Key);
+							saver.TryApplyData(saverDataString);
+						}
 					}
 				}
-			}
-			catch (Exception e)
-			{
-				Debug.LogException(e);
+				catch (Exception e)
+				{
+					Debug.LogException(e);
+				}
 			}
 		}
+
+		OnSaveDataApplied?.Invoke();
 	}
 
 	/// <summary>

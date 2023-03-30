@@ -16,7 +16,7 @@ public abstract class Saver : MonoBehaviour
     {
         if (SaveSystem.Instance != null)
         {
-            SaveSystem.Instance.RegisterSaver(this);
+            //SaveSystem.Instance.RegisterSaver(this);
         }
     }
 
@@ -24,7 +24,7 @@ public abstract class Saver : MonoBehaviour
     {
         if (SaveSystem.Instance != null)
         {
-            SaveSystem.Instance.UnregisterSaver(this);
+            //SaveSystem.Instance.UnregisterSaver(this);
         }
     }
 

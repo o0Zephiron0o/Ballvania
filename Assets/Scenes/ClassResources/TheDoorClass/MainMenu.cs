@@ -8,9 +8,7 @@ public class MainMenu : MonoBehaviour
 
     public void NewGame()
     {
-        SaveSystem.Instance.ClearSavedGameData();
-
-        SceneManager.LoadScene(1);
+        SaveSystem.Instance.NewGame(1);
     }
 
     public void Continue()

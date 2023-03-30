@@ -10,8 +10,7 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        SceneManager.LoadScene(sceneIndex);
         GameManager.Instance.key = _key;
+        SaveSystem.Instance.ChangeScene(sceneIndex);
     }
 }

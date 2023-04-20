@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _dashSpeed;
     [SerializeField] int _maxDash;
     private int _remainingDash;
+    [SerializeField] GameObject dashParticles;
 
     [SerializeField] bool _isSticky;
 
@@ -105,6 +106,7 @@ public class PlayerController : MonoBehaviour
             _rb.constraints = RigidbodyConstraints2D.None;
 
             _rb.velocity = new Vector2(lookDirection.x * _dashSpeed, lookDirection.y * _dashSpeed);
+            Instantiate(dashParticles, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), gameObject.transform.rotation);
             _remainingDash -= 1;
         }
         

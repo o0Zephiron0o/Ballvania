@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 6718945912433048418}
   - component: {fileID: 6718945912433048445}
   - component: {fileID: 6718945912433048446}
+  - component: {fileID: 172304006112858625}
   - component: {fileID: 6718945912433048444}
   - component: {fileID: 6718945912433048447}
   - component: {fileID: 6718945912433048441}
@@ -243,6 +244,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.46
+--- !u!58 &172304006112858625
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6718945912433048416}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.7
 --- !u!114 &6718945912433048444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,7 +319,10 @@ MonoBehaviour:
   _rb: {fileID: 6718945912433048445}
   _dashSpeed: 50
   _maxDash: 1
+  dashParticles: {fileID: 6837202285623427887, guid: 4eecb66719ee7cb4b8975c4436ea6b1c, type: 3}
   _isSticky: 0
+  _canStick: 0
+  _canDoubleDash: 0
 --- !u!114 &6718945912433048441
 MonoBehaviour:
   m_ObjectHideFlags: 0

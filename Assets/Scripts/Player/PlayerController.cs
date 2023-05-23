@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 lookDirection;
 
+    [SerializeField] bool _canStick = false;
+
     private void Awake()
     {
         _controls = new PlayerControls();
@@ -85,6 +87,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Change to green under other circustances
+
         gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.green;
 
         if (_isSticky == false)
@@ -96,6 +99,8 @@ public class PlayerController : MonoBehaviour
 
             _rb.constraints = RigidbodyConstraints2D.None;
         }
+        
+        
     }
 
     private void OnDash(InputAction.CallbackContext context)
@@ -113,15 +118,15 @@ public class PlayerController : MonoBehaviour
     }
     private void OnSwapState(InputAction.CallbackContext context)
     {
-        if(_isSticky == false)
+
+
+        if(_isSticky == false && _canStick == true)
         {
             _isSticky = true;
         }
         else if(_isSticky == true)
         {
-            _isSticky = false;
-
-           
+            _isSticky = false; 
         }
     }
 
@@ -134,11 +139,32 @@ public class PlayerController : MonoBehaviour
 
             _rb.constraints = RigidbodyConstraints2D.FreezePosition;
         }
-
-        _remainingDash = 1;
         
 
         //_playerStats.TakeDamage(1);
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        _remainingDash = _maxDash;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        _remainingDash = _maxDash - 1;
+    }
+
+    public void UnlockPowerUp(int index)
+    {
+        if(index == 1)
+        {
+            _canStick = true;
+        }
+
+        if(index == 2)
+        {
+            _maxDash = 2;
+        }
     }
 
 

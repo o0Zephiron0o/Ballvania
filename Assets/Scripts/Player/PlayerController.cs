@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Rigidbody2D _rb;
     [SerializeField] float _dashSpeed;
     [SerializeField] int _maxDash;
+    public int MaxDash => _maxDash;
     private int _remainingDash;
     [SerializeField] GameObject dashParticles;
 
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 lookDirection;
 
     [SerializeField] bool _canStick = false;
+    public bool CanStick => _canStick;
 
     private void Awake()
     {
@@ -36,6 +38,17 @@ public class PlayerController : MonoBehaviour
 
         _aimAction = _input.actions[_controls.MainCharacter.Aim.name];
 
+    }
+
+    private void Start()
+    {
+        Debug.Log("");
+
+        if (GameManager.Instance.HasSavedProgression)
+        {
+            _canStick = GameManager.Instance.CanStick;
+            _maxDash = GameManager.Instance.MaxDash;
+        }
     }
 
     private void OnEnable()
@@ -159,12 +172,15 @@ public class PlayerController : MonoBehaviour
         if(index == 1)
         {
             _canStick = true;
+            
         }
 
         if(index == 2)
         {
             _maxDash = 2;
         }
+
+        GameManager.Instance.RecordPlayerPowerUps(this);
     }
 
 

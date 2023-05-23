@@ -7,4 +7,11 @@ public class GameManagerSaveData
 {
 
     public float playerHealth;
+    public bool canStick;
+    public int maxDash;
+
+    public bool hasSavedHealth;
+    public bool hasSavedProgression;
+
+    public string key;
 }

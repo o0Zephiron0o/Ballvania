@@ -8,7 +8,7 @@ public class PlayerStats : MonoBehaviour
     public float MaxHp => _maxHp;
 
     [SerializeField] float _currentHp;
-    public float currentHP => _currentHp;
+    public float CurrentHP => _currentHp;
 
     private void Awake()
     {
@@ -21,6 +21,14 @@ public class PlayerStats : MonoBehaviour
         {
             _currentHp = GameManager.Instance.CurrentHealth;
             updateHealth?.Invoke(_currentHp, _maxHp);
+        }
+    }
+
+    private void Update()
+    {
+        if(CurrentHP <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 

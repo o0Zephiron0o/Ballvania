@@ -21,7 +21,7 @@ public class HealthBar : MonoBehaviour
         {
             playerStats.updateHealth += OnUpdateHealth;
             _subscribed = true;
-            OnUpdateHealth(playerStats.currentHP, playerStats.MaxHp);
+            OnUpdateHealth(playerStats.CurrentHP, playerStats.MaxHp);
         }
     }
 

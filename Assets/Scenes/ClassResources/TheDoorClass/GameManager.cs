@@ -18,6 +18,21 @@ public class GameManager : MonoBehaviour, ISavable<GameManagerSaveData>
     private bool _hasSavedHealth;
     public bool HasSavedHealth => _hasSavedHealth;
 
+
+
+
+
+    private int _maxDash;
+    public int MaxDash => _maxDash;
+
+    private bool _canStick;
+    public bool CanStick => _canStick;
+
+    private bool _hasSavedProgression;
+    public bool HasSavedProgression => _hasSavedProgression;
+
+
+
     protected virtual void Awake()
     {
         if(instance != null && instance != this)
@@ -42,9 +57,18 @@ public class GameManager : MonoBehaviour, ISavable<GameManagerSaveData>
 
     public void RecordPlayerHealth(PlayerStats player)
     {
-        _currentHealth = player.currentHP;
+        _currentHealth = player.CurrentHP;
         _hasSavedHealth = true;
     }
+
+    public void RecordPlayerPowerUps(PlayerController player)
+    {
+        _maxDash = player.MaxDash;
+        _canStick = player.CanStick;
+        _hasSavedProgression = true;
+    }
+
+
 
 
     public void SpawnPlayer()
@@ -53,10 +77,12 @@ public class GameManager : MonoBehaviour, ISavable<GameManagerSaveData>
 
         foreach(SpawnPoints spawnPoint in spawnList)
         {
+            Debug.Log("Got in foreach");
+
             if(key == spawnPoint.spawnKey)
             {
                 Instantiate(player, spawnPoint.transform.position,Quaternion.identity);
-
+                Debug.Log("player got spawned");
 
             }
         }
@@ -68,7 +94,11 @@ public class GameManager : MonoBehaviour, ISavable<GameManagerSaveData>
     public void ApplySaveData(GameManagerSaveData saveData)
     {
         _currentHealth = saveData.playerHealth;
-        _hasSavedHealth = true;
+        _canStick = saveData.canStick;
+        _maxDash = saveData.maxDash;
+        _hasSavedHealth = saveData.hasSavedHealth;
+        _hasSavedProgression = saveData.hasSavedProgression;
+        key = saveData.key;
     }
 
     public GameManagerSaveData GetSaveData()
@@ -76,6 +106,11 @@ public class GameManager : MonoBehaviour, ISavable<GameManagerSaveData>
         GameManagerSaveData saveData = new GameManagerSaveData();
 
         saveData.playerHealth = _currentHealth;
+        saveData.canStick = _canStick;
+        saveData.maxDash = _maxDash;
+        saveData.hasSavedHealth = _hasSavedHealth;
+        saveData.hasSavedProgression = _hasSavedProgression;
+        saveData.key = key;
 
         return saveData;
     }

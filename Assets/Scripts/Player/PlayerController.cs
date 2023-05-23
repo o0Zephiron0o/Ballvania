@@ -42,8 +42,6 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("");
-
         if (GameManager.Instance.HasSavedProgression)
         {
             _canStick = GameManager.Instance.CanStick;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour, ISavable<GameManagerSaveData>
 {
@@ -77,12 +78,12 @@ public class GameManager : MonoBehaviour, ISavable<GameManagerSaveData>
 
         foreach(SpawnPoints spawnPoint in spawnList)
         {
-            Debug.Log("Got in foreach");
+            
 
             if(key == spawnPoint.spawnKey)
             {
                 Instantiate(player, spawnPoint.transform.position,Quaternion.identity);
-                Debug.Log("player got spawned");
+                
 
             }
         }
@@ -99,6 +100,7 @@ public class GameManager : MonoBehaviour, ISavable<GameManagerSaveData>
         _hasSavedHealth = saveData.hasSavedHealth;
         _hasSavedProgression = saveData.hasSavedProgression;
         key = saveData.key;
+
     }
 
     public GameManagerSaveData GetSaveData()
@@ -112,6 +114,16 @@ public class GameManager : MonoBehaviour, ISavable<GameManagerSaveData>
         saveData.hasSavedProgression = _hasSavedProgression;
         saveData.key = key;
 
+        Debug.Log("Get save data" + saveData.playerHealth);
+
         return saveData;
+    }
+
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+
+        Destroy(gameObject);
     }
 }

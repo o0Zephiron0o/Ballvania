@@ -101,6 +101,12 @@ public class SaveSystem : MonoBehaviour
 
     private IEnumerator LoadFromSlot(int slotNumber, bool loadScene = true)
     {
+		foreach(Saver saver in _savers)
+        {
+			saver.ResetSaver();
+        }
+
+
         _currentSlot = slotNumber;
 
         string saveGameJson = _storer.RetrieveData(GetSaveKey(slotNumber));

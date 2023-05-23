@@ -45,6 +45,11 @@ public abstract class Saver : MonoBehaviour
         _applied = true;
     }
 
+    public void ResetSaver()
+    {
+        _applied = false;
+    }
+
     protected abstract void ApplyDataFromJson(string s);
 
 }

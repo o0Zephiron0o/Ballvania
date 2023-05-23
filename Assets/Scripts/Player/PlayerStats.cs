@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerStats : MonoBehaviour
 {
     [SerializeField] float _maxHp;
@@ -29,7 +30,11 @@ public class PlayerStats : MonoBehaviour
         if(CurrentHP <= 0)
         {
             Destroy(gameObject);
+
+            GameManager.Instance.ReturnToMainMenu();
         }
+
+
     }
 
     public void TakeDamage(float damage)

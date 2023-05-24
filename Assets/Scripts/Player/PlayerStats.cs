@@ -11,6 +11,10 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] float _currentHp;
     public float CurrentHP => _currentHp;
 
+    private bool _invincible = false;
+    [SerializeField] float _invincibleDuration = 0.5f;
+    private float _invincibleTimeCounter;
+
     private void Awake()
     {
         _currentHp = _maxHp;
@@ -34,17 +38,36 @@ public class PlayerStats : MonoBehaviour
             GameManager.Instance.ReturnToMainMenu();
         }
 
+        if(_invincible == true)
+        {
+            _invincibleTimeCounter += Time.deltaTime;
+        }
+
+        if(_invincibleTimeCounter >= _invincibleDuration)
+        {
+            _invincible = false ;
+            _invincibleTimeCounter = 0;
+        }
+
 
     }
 
     public void TakeDamage(float damage)
     {
-        _currentHp -= damage;
+
+        if(_invincible == false)
+        {
+            _currentHp -= damage;
+
+            //invoke
+            //?.invoke will check if its null or not before invoking
+            updateHealth?.Invoke(_currentHp, _maxHp);
+            GameManager.Instance.RecordPlayerHealth(this);
+        }
+
+        _invincible = true;
         
-        //invoke
-        //?.invoke will check if its null or not before invoking
-        updateHealth?.Invoke(_currentHp, _maxHp);
-        GameManager.Instance.RecordPlayerHealth(this);
+       
     }
 
     public delegate void UpdateHealth(float currentHealth, float maxHealth);

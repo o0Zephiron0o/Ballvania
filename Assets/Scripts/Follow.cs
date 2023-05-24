@@ -19,6 +19,6 @@ public class Follow : MonoBehaviour
             target = FindObjectOfType<PlayerStats>()?.gameObject;
         }
         
-        gameObject.transform.position = new Vector3(target.transform.position.x, target.transform.position.y, gameObject.transform.position.z);
+        gameObject.transform.position = new Vector3(target.transform.position.x, target.transform.position.y + 5, gameObject.transform.position.z);
     }
 }

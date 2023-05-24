@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour
         if(_isSticky == true)
         {
             _rb.velocity = Vector2.zero;
-            //transform.parent = collision.transform;
+            transform.parent = collision.transform;
 
             _rb.constraints = RigidbodyConstraints2D.FreezePosition;
         }
@@ -158,6 +158,7 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         _remainingDash = _maxDash;
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)

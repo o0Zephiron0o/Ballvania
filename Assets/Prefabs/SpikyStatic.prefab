@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destructible: {fileID: 4803280760738172294}
+  deathParticle: {fileID: 5651714058482749067, guid: c6aafa192c27784438ff31e7a13b01c8, type: 3}
 --- !u!1 &4803280761420489865
 GameObject:
   m_ObjectHideFlags: 0

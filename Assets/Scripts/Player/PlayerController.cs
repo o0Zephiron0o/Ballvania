@@ -143,7 +143,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(_isSticky == true)
+        
+        if(_isSticky == true && collision.collider.CompareTag("Sticky"))
         {
             _rb.velocity = Vector2.zero;
             transform.parent = collision.transform;
@@ -155,9 +156,11 @@ public class PlayerController : MonoBehaviour
         //_playerStats.TakeDamage(1);
     }
 
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         _remainingDash = _maxDash;
+
 
     }
 
@@ -165,7 +168,11 @@ public class PlayerController : MonoBehaviour
     {
         _remainingDash = _maxDash - 1;
 
-        gameObject.transform.SetParent(null);
+        if(collision.CompareTag("Sticky"))
+        {
+            gameObject.transform.SetParent(null);
+        }
+        
     }
 
     public void UnlockPowerUp(int index)

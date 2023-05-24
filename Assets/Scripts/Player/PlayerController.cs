@@ -164,6 +164,8 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         _remainingDash = _maxDash - 1;
+
+        gameObject.transform.SetParent(null);
     }
 
     public void UnlockPowerUp(int index)

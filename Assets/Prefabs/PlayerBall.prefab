@@ -199,7 +199,7 @@ Transform:
   m_GameObject: {fileID: 6718945912433048416}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6718945911393742198}
@@ -317,12 +317,11 @@ MonoBehaviour:
   _input: {fileID: 6718945912433048444}
   _playerStats: {fileID: 6718945912433048441}
   _rb: {fileID: 6718945912433048445}
-  _dashSpeed: 50
+  _dashSpeed: 30
   _maxDash: 1
   dashParticles: {fileID: 6837202285623427887, guid: 4eecb66719ee7cb4b8975c4436ea6b1c, type: 3}
   _isSticky: 0
   _canStick: 0
-  _canDoubleDash: 0
 --- !u!114 &6718945912433048441
 MonoBehaviour:
   m_ObjectHideFlags: 0

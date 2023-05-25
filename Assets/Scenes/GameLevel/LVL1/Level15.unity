@@ -896,6 +896,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2058838846733076555, guid: 2caeb076803052a4babe06a473d1537f, type: 3}
+      propertyPath: _damage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2058838847193089704, guid: 2caeb076803052a4babe06a473d1537f, type: 3}
       propertyPath: m_Name
       value: BoxOfDeath (2)
@@ -1891,6 +1895,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 2058838846733076555, guid: 2caeb076803052a4babe06a473d1537f, type: 3}
+      propertyPath: _damage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2058838847193089704, guid: 2caeb076803052a4babe06a473d1537f, type: 3}
       propertyPath: m_Name
       value: BoxOfDeath (3)
@@ -2185,6 +2193,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 2058838846733076555, guid: 2caeb076803052a4babe06a473d1537f, type: 3}
+      propertyPath: _damage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2058838847193089704, guid: 2caeb076803052a4babe06a473d1537f, type: 3}
       propertyPath: m_Name
       value: BoxOfDeath
@@ -2253,6 +2265,10 @@ PrefabInstance:
     - target: {fileID: 2058838846733076548, guid: 2caeb076803052a4babe06a473d1537f, type: 3}
       propertyPath: m_SortingOrder
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2058838846733076555, guid: 2caeb076803052a4babe06a473d1537f, type: 3}
+      propertyPath: _damage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2058838847193089704, guid: 2caeb076803052a4babe06a473d1537f, type: 3}
       propertyPath: m_Name

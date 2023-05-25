@@ -32,4 +32,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameLevel/LVL1/Level12.unity
     guid: 62371cabd95720f49958628af157aa43
+  - enabled: 1
+    path: Assets/Scenes/GameLevel/LVL1/Level13.unity
+    guid: 38dd0a16c9a6da944bd7b01d0300fa2f
+  - enabled: 1
+    path: Assets/Scenes/GameLevel/LVL1/LevelDoubleDash.unity
+    guid: 0abe8654f5c15344baf632f367f848df
+  - enabled: 1
+    path: Assets/Scenes/GameLevel/LVL1/Level14.unity
+    guid: c96dac05175b6a145aca8a6a18aa93eb
+  - enabled: 1
+    path: Assets/Scenes/GameLevel/LVL1/Level15.unity
+    guid: b17ff7440fb0f34499c57d4d02281595
+  - enabled: 1
+    path: Assets/Scenes/GameLevel/LVL1/Level16.unity
+    guid: 8a2f8da6ee6f13545939e1bc30e68846
+  - enabled: 1
+    path: Assets/Scenes/GameLevel/LVL1/Level17.unity
+    guid: 902d964efdcf0cd41b7b3aedd50bdc9a
   m_configObjects: {}

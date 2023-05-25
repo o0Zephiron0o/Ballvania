@@ -130,6 +130,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2058838846733076549, guid: 2caeb076803052a4babe06a473d1537f, type: 3}
+      propertyPath: m_Size.x
+      value: 2.2916334
+      objectReference: {fileID: 0}
+    - target: {fileID: 2058838846733076549, guid: 2caeb076803052a4babe06a473d1537f, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.00957787
+      objectReference: {fileID: 0}
     - target: {fileID: 2058838847193089704, guid: 2caeb076803052a4babe06a473d1537f, type: 3}
       propertyPath: m_Name
       value: BoxOfDeath
@@ -1028,7 +1036,7 @@ Transform:
   - {fileID: 178339804}
   - {fileID: 1164038921}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &725794393
 GameObject:
@@ -2279,7 +2287,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1870060937
 GameObject:
